@@ -5,12 +5,14 @@
   "type": "module",
   "scripts": {
     "lint": "eslint .",
-    "versions": "node -p \"JSON.stringify({ node: process.version, eslint: require('./node_modules/eslint/package.json').version, typescriptEslint: require('./node_modules/typescript-eslint/package.json').version, typescript: require('./node_modules/typescript/package.json').version }, null, 2)\""
+    "tsc7": "node ./node_modules/typescript-7/bin/tsc --noEmit",
+    "versions": "node -p \"JSON.stringify({ node: process.version, eslint: require('./node_modules/eslint/package.json').version, typescriptEslint: require('./node_modules/typescript-eslint/package.json').version, typescriptForEslint: require('./node_modules/typescript/package.json').version, typescript7: require('./node_modules/typescript-7/package.json').version }, null, 2)\""
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "eslint": "^10.6.0",
-    "typescript": "^7.0.2",
+    "typescript": "^6.0.3",
+    "typescript-7": "npm:typescript@^7.0.2",
     "typescript-eslint": "^8.63.0"
   }
 }

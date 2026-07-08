@@ -1,4 +1,4 @@
-name: Reproduce TypeScript 7 typescript-eslint failure
+name: Validate TypeScript 7 ESLint workaround
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  npm-ci-peer-conflict:
-    name: npm ci peer dependency conflict
+  validate:
+    name: ESLint with TS6 peer and TS7 compiler alias
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -23,26 +23,14 @@ jobs:
           node --version
           npm --version
 
-      - name: Reproduce npm ci failure
+      - name: Install dependencies
         run: npm ci
-
-  eslint-crash-after-install:
-    name: ESLint crash after npm install
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "24"
-
-      - name: Install dependencies despite unsupported peer dependency
-        run: npm install --force
 
       - name: Show installed package versions
         run: npm run versions
 
-      - name: Reproduce ESLint failure
+      - name: Run ESLint
         run: npm run lint
+
+      - name: Run TypeScript 7 compiler
+        run: npm run tsc7

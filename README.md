@@ -1,32 +1,30 @@
-# TypeScript 7 + typescript-eslint 8.63.0 Reproduction
+# TypeScript 7 + typescript-eslint Workaround
 
-This repository reproduces two related failures after upgrading TypeScript to `7.0.2` while using `typescript-eslint@8.63.0`.
+This branch demonstrates a temporary workaround for using the TypeScript 7 compiler while keeping ESLint functional with `typescript-eslint@8.63.0`.
+
+It does not add real TypeScript 7 support to `typescript-eslint`. Instead:
+
+- `typescript` stays on `6.0.3` so `typescript-eslint` sees a supported peer dependency.
+- `typescript-7` is installed as an npm alias for `typescript@7.0.2`.
+- `npm run lint` uses the supported TypeScript 6 peer.
+- `npm run tsc7` runs the TypeScript 7 compiler via the alias.
 
 ## Versions
 
 - Node.js: `24`
 - npm: `11`
 - ESLint: `10.6.0`
-- TypeScript: `7.0.2`
+- TypeScript for ESLint: `6.0.3`
+- TypeScript compiler alias: `7.0.2`
 - typescript-eslint: `8.63.0`
 
-## Reproduction
+## Commands
 
 ```sh
 npm ci
-```
-
-Expected result: dependency installation succeeds.
-
-Actual result: `npm ci` fails because `typescript-eslint@8.63.0` declares a peer dependency on `typescript >=4.8.4 <6.1.0`.
-
-```sh
-npm install --force
+npm run versions
 npm run lint
+npm run tsc7
 ```
 
-Expected result: ESLint either succeeds or reports a clear unsupported TypeScript version error.
-
-Actual result: ESLint crashes inside `@typescript-eslint/typescript-estree`.
-
-The included GitHub Actions workflow runs both cases as separate jobs so maintainers can see both failure modes.
+The included GitHub Actions workflow validates the workaround.
