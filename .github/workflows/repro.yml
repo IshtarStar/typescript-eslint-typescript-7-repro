@@ -1,0 +1,48 @@
+name: Reproduce TypeScript 7 typescript-eslint failure
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  npm-ci-peer-conflict:
+    name: npm ci peer dependency conflict
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Show versions
+        run: |
+          node --version
+          npm --version
+
+      - name: Reproduce npm ci failure
+        run: npm ci
+
+  eslint-crash-after-install:
+    name: ESLint crash after npm install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Install dependencies despite unsupported peer dependency
+        run: npm install --force
+
+      - name: Show installed package versions
+        run: npm run versions
+
+      - name: Reproduce ESLint failure
+        run: npm run lint

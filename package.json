@@ -1,0 +1,16 @@
+{
+  "name": "typescript-eslint-typescript-7-repro",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "versions": "node -p \"JSON.stringify({ node: process.version, eslint: require('./node_modules/eslint/package.json').version, typescriptEslint: require('./node_modules/typescript-eslint/package.json').version, typescript: require('./node_modules/typescript/package.json').version }, null, 2)\""
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.6.0",
+    "typescript": "^7.0.2",
+    "typescript-eslint": "^8.63.0"
+  }
+}
