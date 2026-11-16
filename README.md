@@ -1,6 +1,6 @@
 # TypeScript 7 + typescript-eslint Workaround
 
-This branch demonstrates a temporary workaround for using the TypeScript 7 compiler while keeping ESLint functional with `typescript-eslint@8.63.0`.
+This branch demonstrates a temporary workaround for using the TypeScript 7 compiler while keeping ESLint functional with `typescript-eslint@8.73.0`.
 
 It does not add real TypeScript 7 support to `typescript-eslint`. Instead:
 
@@ -13,10 +13,10 @@ It does not add real TypeScript 7 support to `typescript-eslint`. Instead:
 
 - Node.js: `24`
 - npm: `11`
-- ESLint: `10.6.0`
+- ESLint: `10.15.0`
 - TypeScript for ESLint: `6.0.3`
 - TypeScript compiler alias: `7.0.2`
-- typescript-eslint: `8.63.0`
+- typescript-eslint: `8.73.0`
 
 ## Commands
 
