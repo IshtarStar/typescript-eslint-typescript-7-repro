@@ -26,8 +26,8 @@ jobs:
       - name: Reproduce npm ci failure
         run: npm ci
 
-  eslint-crash-after-install:
-    name: ESLint crash after npm install
+  eslint-failure-after-install:
+    name: ESLint failure after npm install
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -44,5 +44,5 @@ jobs:
       - name: Show installed package versions
         run: npm run versions
 
-      - name: Reproduce ESLint failure
+      - name: Reproduce typescript-eslint TS 7 rejection
         run: npm run lint
